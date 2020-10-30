@@ -1,5 +1,7 @@
 package main
+
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strings"
@@ -18,7 +20,6 @@ func main() {
 		if err != nil {
 			_, _ = fmt.Fprintln(os.Stderr, err)
 		}
-		err = runCommand(cmdString)
 		err = runCommand(*cb, cmdString)
 		if err != nil {
 			_, _ = fmt.Fprintln(os.Stderr, err)
@@ -57,3 +58,6 @@ func runCommand(cb ChessBoard, commandStr string) (e error) {
 		break
 	default:
 		e = fmt.Errorf("unknown command %s", args[0])
+	}
+	return e
+}
